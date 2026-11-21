@@ -7,14 +7,19 @@
     ["Trace id 550e8400-e29b-41d4-a716-446655440000 appears once.", ["550e8400", "446655440000"], ["Trace id", "appears once"]],
     ["Model meta-llama/Llama-3.3-70B-Instruct is large.", ["meta-llama/Llama-3.3-70B-Instruct", "70B"], ["Model", "is large"]],
     ["Config at ~/.config/hermes/config.yaml was read.", ["config.yaml", "~/.config"], ["Config at", "was read"]],
-    ["Version v2.1.0-beta.3 shipped.", ["v2.1.0-beta.3"], ["Version", "shipped"]]
+    ["Version v2.1.0-beta.3 shipped.", ["v2.1.0-beta.3"], ["Version", "shipped"]],
+    ["Commit 73688014f78.", ["73688014f78"], ["Commit"]]
   ],
   "pass_through_tokens": [
     ["The samples played cleanly, so listen again.", [], ["The samples played cleanly, so listen again"]],
     ["Use git status after the change.", [], ["Use git status after the change"]],
     ["Email me at user@example.com.", [], ["user@example.com"]],
     ["COVID-19 and well-known facts stay.", [], ["COVID-19", "well-known"]],
-    ["Due 2026/06/02 and status N/A here.", [], ["2026/06/02", "N/A"]],
-    ["The final score was 3:2.", [], ["3:2"]]
+    ["Due 2026-06-02 and status N/A here.", [], ["2026-06-02", "N/A"]],
+    ["The final score was 3:2.", [], ["3:2"]],
+    ["Version 2.1.8. shipped in June.", [], ["2.1.8"]],
+    ["Due 2026-06-02. All done.", [], ["2026-06-02"]],
+    ["Prepararon el terreno en los años 40-50. El taller siguió.", [], ["40-50", "El taller siguió"]],
+    ["Prices doubled in the 1970s, from 10-20 to 40-50 dollars.", [], ["10-20", "40-50"]]
   ]
 }
