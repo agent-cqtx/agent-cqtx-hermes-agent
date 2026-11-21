@@ -155,6 +155,13 @@ _DATE_TOKEN_RE = re.compile(r"\d{4}[-/]\d{1,2}(?:[-/]\d{1,2})?")
 
 def _is_dense_identifier(token: str) -> bool:
     """True for a machine token a voice would spell out character by character."""
+    # A sentence-final period is punctuation, not an internal separator: without
+    # this, "40-50." (hyphen + "separator") reads as identifier-dense and the
+    # voice silently skips the number range. Trailing dots never rescue a real
+    # identifier — "config.yaml." still classifies on "config.yaml".
+    token = token.rstrip(".")
+    if not token:
+        return False
     if "@" in token or _DATE_TOKEN_RE.fullmatch(token):
         return False  # email addresses, dates ("2026-09-28", "2026/06/02")
     if token.startswith(("~/", "./", "../", "/")):

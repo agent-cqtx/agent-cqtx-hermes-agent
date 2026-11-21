@@ -37,6 +37,14 @@ const IDENTIFIER_TOKEN_RE = /[A-Za-z0-9_./~@-]+/g
 const DATE_TOKEN_RE = /^\d{4}[-/]\d{1,2}(?:[-/]\d{1,2})?$/
 
 function isDenseIdentifier(token: string): boolean {
+  // A sentence-final period is punctuation, not an internal separator: without
+  // this, "40-50." (hyphen + "separator") reads as identifier-dense and the
+  // voice silently skips the number range. Trailing dots never rescue a real
+  // identifier — "config.yaml." still classifies on "config.yaml".
+  token = token.replace(/\.+$/, '')
+  if (!token) {
+    return false
+  }
   if (token.includes('@') || DATE_TOKEN_RE.test(token)) {
     return false // email addresses, dates ("2026-09-28", "2026/06/02")
   }
