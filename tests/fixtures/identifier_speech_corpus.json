@@ -17,6 +17,8 @@
     ["COVID-19 and well-known facts stay.", [], ["COVID-19", "well-known"]],
     ["Due 2026-06-02 and status N/A here.", [], ["2026-06-02", "N/A"]],
     ["The final score was 3:2.", [], ["3:2"]],
+    ["Version 2.1.8. shipped in June.", [], ["2.1.8"]],
+    ["Due 2026-06-02. All done.", [], ["2026-06-02"]],
     ["Prepararon el terreno en los años 40-50. El taller siguió.", [], ["40-50", "El taller siguió"]],
     ["Prices doubled in the 1970s, from 10-20 to 40-50 dollars.", [], ["10-20", "40-50"]]
   ]

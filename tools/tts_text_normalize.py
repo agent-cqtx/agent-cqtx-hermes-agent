@@ -18,6 +18,9 @@ _HEAD = "\x00"
 _MD_CODE_BLOCK_RE = re.compile(r"```[\s\S]*?```")
 _MD_LINK_RE = re.compile(r"\[([^\]]+)\]\((?:[^()]|\([^)]*\))*\)")
 _MD_IMAGE_RE = re.compile(r"!\[([^\]]*)\]\((?:[^()]|\([^)]*\))*\)")
+# The period lives in the class: "...yaml." must prune as a filename, not
+# survive as "...yaml" plus a stray stop. (Sentence-final periods are handled
+# in _is_dense_identifier: punctuation is not an internal separator.)
 _MD_INLINE_CODE_RE = re.compile(r"`([^`]+)`")
 _MD_BOLD_RE = re.compile(r"\*\*(.+?)\*\*", flags=re.DOTALL)
 _MD_UNDERSCORE_BOLD_RE = re.compile(r"__(.+?)__", flags=re.DOTALL)
@@ -155,10 +158,9 @@ _DATE_TOKEN_RE = re.compile(r"\d{4}[-/]\d{1,2}(?:[-/]\d{1,2})?")
 
 def _is_dense_identifier(token: str) -> bool:
     """True for a machine token a voice would spell out character by character."""
-    # A sentence-final period is punctuation, not an internal separator: without
-    # this, "40-50." (hyphen + "separator") reads as identifier-dense and the
-    # voice silently skips the number range. Trailing dots never rescue a real
-    # identifier — "config.yaml." still classifies on "config.yaml".
+    # A sentence-final period is punctuation, not an internal separator (see
+    # _MD_INLINE_CODE_RE): without this, "40-50." (hyphen + "separator") reads
+    # as identifier-dense and the voice silently skips the number range.
     token = token.rstrip(".")
     if not token:
         return False
